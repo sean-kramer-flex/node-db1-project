@@ -11,12 +11,12 @@ const getById = id => {
   .first()
 }
 
-const create = async account => {
+const create = account => {
   return db.insert(account)
   .into('accounts')
 }
 
-const updateById = async (id, account) => {
+const updateById = (id, account) => {
   return db('accounts').update(account)
   .where({id})
   
