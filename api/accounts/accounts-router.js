@@ -1,23 +1,46 @@
+const accountsModel = require('./accounts-model')
+
 const router = require('express').Router()
 
 router.get('/', async (req, res, next) => {
-  // DO YOUR MAGIC
+  try {
+    const data = await accountsModel.getAll()
+    res.json(data)
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.get('/:id', (req, res, next) => {
-  // DO YOUR MAGIC
+  try {
+
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.post('/', (req, res, next) => {
-  // DO YOUR MAGIC
+  try {
+
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.put('/:id', (req, res, next) => {
-  // DO YOUR MAGIC
+  try {
+
+  } catch (err) {
+    next(err)
+  }
 });
 
 router.delete('/:id', (req, res, next) => {
-  // DO YOUR MAGIC
+  try {
+
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.use((err, req, res, next) => { // eslint-disable-line
