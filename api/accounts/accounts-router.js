@@ -22,7 +22,11 @@ res.json(account)
 
 router.post('/', async (req, res, next) => {
   try {
-
+const newAccount = await accountsModel.create({
+  name: req.body.name,
+  budget: req.body.budget,
+})
+res.status(201).json(newAccount)
   } catch (err) {
     next(err)
   }

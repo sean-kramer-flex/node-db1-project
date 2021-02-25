@@ -12,7 +12,8 @@ const getById = id => {
 }
 
 const create = async account => {
-  // DO YOUR MAGIC
+  return db.insert(account)
+  .into('accounts')
 }
 
 const updateById = async (id, account) => {
