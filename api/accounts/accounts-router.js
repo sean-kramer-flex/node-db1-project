@@ -22,10 +22,13 @@ res.json(account)
 
 router.post('/', async (req, res, next) => {
   try {
-const newAccount = await accountsModel.create({
+const [id] = await accountsModel.create({
   name: req.body.name,
   budget: req.body.budget,
 })
+
+const newAccount = await accountsModel.getById(id)
+
 res.status(201).json(newAccount)
   } catch (err) {
     next(err)
@@ -34,7 +37,14 @@ res.status(201).json(newAccount)
 
 router.put('/:id', async (req, res, next) => {
   try {
+await accountsModel.updateById(req.params.id, {
+  name: req.body.name,
+  budget: req.body.budget,
+})
 
+const updatedAccount = await accountsModel.getById(req.params.id)
+
+res.json(updatedAccount)
   } catch (err) {
     next(err)
   }
@@ -42,7 +52,11 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
+await accountsModel.deleteById(req.params.id)
 
+res.status(201).json({
+  message: "account deleted"
+})
   } catch (err) {
     next(err)
   }
