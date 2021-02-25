@@ -11,7 +11,16 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
+  try {
+const account = await accountsModel.getById(req.params.id)
+res.json(account)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.post('/', async (req, res, next) => {
   try {
 
   } catch (err) {
@@ -19,15 +28,7 @@ router.get('/:id', (req, res, next) => {
   }
 })
 
-router.post('/', (req, res, next) => {
-  try {
-
-  } catch (err) {
-    next(err)
-  }
-})
-
-router.put('/:id', (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
 
   } catch (err) {
@@ -35,7 +36,7 @@ router.put('/:id', (req, res, next) => {
   }
 });
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
 
   } catch (err) {
